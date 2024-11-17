@@ -1,4 +1,4 @@
-package com.example.Citronix;
+package com.example.citronix;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
