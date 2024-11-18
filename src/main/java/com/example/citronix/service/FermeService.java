@@ -6,4 +6,6 @@ public interface FermeService {
     FermeDto addFerme(FermeDto fermeDto);
 
     FermeDto getFermeById(Long id);
+
+    FermeDto updateFerme(FermeDto fermeDto, Long id);
 }

@@ -1,5 +1,6 @@
 package com.example.citronix.controller;
 
+import com.example.citronix.entity.Ferme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,16 @@ public class FermeController {
         FermeDto fermeDto = fermeService.getFermeById(id);
         if (fermeDto != null) {
             return ResponseEntity.ok(fermeDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<FermeDto> updateFerme(@Valid @RequestBody FermeDto fermeDto, @PathVariable Long id) {
+        FermeDto updatedFerme = fermeService.updateFerme(fermeDto, id);
+        if (updatedFerme != null) {
+            return ResponseEntity.ok(updatedFerme);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

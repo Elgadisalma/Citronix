@@ -28,4 +28,22 @@ public class FermeServiceImpl implements FermeService {
         Ferme ferme = fermeRepository.findById(id).orElse(null);
         return fermeMapper.toDTO(ferme);
     }
+
+    @Override
+    public FermeDto updateFerme(FermeDto fermeDto, Long id) {
+        Ferme existingFerme = fermeRepository.findById(id).orElse(null);
+        if (existingFerme == null) {
+            return null;
+        }
+
+        existingFerme.setNom(fermeDto.getNom());
+        existingFerme.setLocalisation(fermeDto.getLocalisation());
+        existingFerme.setSuperficie(fermeDto.getSuperficie());
+        existingFerme.setDateCreation(fermeDto.getDateCreation());
+
+        Ferme updatedFerme = fermeRepository.save(existingFerme);
+
+        return fermeMapper.toDTO(updatedFerme);
+    }
+
 }
