@@ -8,4 +8,6 @@ public interface FermeService {
     FermeDto getFermeById(Long id);
 
     FermeDto updateFerme(FermeDto fermeDto, Long id);
+
+    FermeDto deleteFerme(Long id);
 }

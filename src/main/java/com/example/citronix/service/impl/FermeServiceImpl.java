@@ -46,4 +46,16 @@ public class FermeServiceImpl implements FermeService {
         return fermeMapper.toDTO(updatedFerme);
     }
 
+    @Override
+    public FermeDto deleteFerme(Long id) {
+        Ferme existingFerme = fermeRepository.findById(id).orElse(null);
+        if (existingFerme == null) {
+            return null;
+        }
+
+        fermeRepository.delete(existingFerme);
+
+        return fermeMapper.toDTO(existingFerme);
+    }
+
 }

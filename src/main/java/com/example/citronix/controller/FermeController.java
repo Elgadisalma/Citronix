@@ -44,4 +44,14 @@ public class FermeController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<FermeDto> deleteFerme(@PathVariable Long id){
+        FermeDto deletedFerme = fermeService.deleteFerme(id);
+        if (deletedFerme != null) {
+            return ResponseEntity.ok(deletedFerme);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }
