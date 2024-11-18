@@ -22,4 +22,10 @@ public class FermeServiceImpl implements FermeService {
         Ferme savedFerme = fermeRepository.save(ferme);
         return fermeMapper.toDTO(savedFerme);
     }
+
+    @Override
+    public FermeDto getFermeById(Long id) {
+        Ferme ferme = fermeRepository.findById(id).orElse(null);
+        return fermeMapper.toDTO(ferme);
+    }
 }
