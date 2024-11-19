@@ -29,4 +29,29 @@ public class FermeDto {
     private LocalDate dateCreation;
 
     private List<Long> idChamps;
+
+    // Getters
+    public Long getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public double getSuperficie() {
+        return superficie;
+    }
+
+    public LocalDate getDateCreation() {
+        return dateCreation;
+    }
+
+    public List<Long> getIdChamps() {
+        return idChamps;
+    }
 }

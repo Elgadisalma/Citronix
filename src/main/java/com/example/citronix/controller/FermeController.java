@@ -11,6 +11,8 @@ import com.example.citronix.service.FermeService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/ferme")
 public class FermeController {
@@ -52,6 +54,17 @@ public class FermeController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<FermeDto>> searchFerme(
+            @RequestParam(required = false) String nom,
+            @RequestParam(required = false) String localisation,
+            @RequestParam(required = false) Double minSuperficie,
+            @RequestParam(required = false) Double maxSuperficie) {
+
+        List<FermeDto> fermes = fermeService.searchFerme(nom, localisation, minSuperficie, maxSuperficie);
+        return ResponseEntity.ok(fermes);
     }
 
 }

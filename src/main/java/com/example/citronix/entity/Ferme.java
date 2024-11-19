@@ -29,4 +29,29 @@ public class Ferme {
 
     @OneToMany(mappedBy = "ferme")
     private List<Champ> champs;
+
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setLocalisation(String localisation) {
+        this.localisation = localisation;
+    }
+
+    public void setSuperficie(double superficie) {
+        this.superficie = superficie;
+    }
+
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public void setChamps(List<Champ> champs) {
+        this.champs = champs;
+    }
 }
