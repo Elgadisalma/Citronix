@@ -8,4 +8,5 @@ public interface ChampService {
 
     ChampDto updateChamp(ChampDto champDto, Long id);
 
+    ChampDto getChampById(Long id);
 }

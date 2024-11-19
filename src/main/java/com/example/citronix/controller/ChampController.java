@@ -26,7 +26,15 @@ public class ChampController {
         return ResponseEntity.ok(createdChamp);
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<ChampDto> findChampById(@PathVariable Long id) {
+        ChampDto champDto = champService.getChampById(id);
+        if (champDto != null) {
+            return ResponseEntity.ok(champDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<ChampDto> updateChamp(@Valid @RequestBody ChampDto champDto, @PathVariable Long id) {

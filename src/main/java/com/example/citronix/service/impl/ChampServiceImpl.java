@@ -37,8 +37,16 @@ public class ChampServiceImpl implements ChampService {
 
         Champ updatedChamp = champRepository.save(existingChamp);
 
-        return champMapper.toDTO(updatedChamp);  // Retourne le ChampDto mis à jour
+        return champMapper.toDTO(updatedChamp);
     }
+
+    @Override
+    public ChampDto getChampById(Long id) {
+        Champ champ = champRepository.findById(id).orElse(null);
+        return champMapper.toDTO(champ);
+    }
+
+
 
 
 }
