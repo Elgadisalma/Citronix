@@ -18,10 +18,9 @@ public class ChampDto {
     @NotNull(message = "L'ID de la ferme est obligatoire.")
     private Long idFerme;
 
-    @NotEmpty(message = "Les arbres doivent être spécifiés.")
     private List<Long> idArbres;
 
-    // Getters (automatiquement générés par Lombok grâce à @Data)
+    // Getters
     public Long getId() {
         return id;
     }

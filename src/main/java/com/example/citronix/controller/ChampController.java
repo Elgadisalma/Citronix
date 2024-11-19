@@ -11,8 +11,6 @@ import com.example.citronix.service.ChampService;
 
 import jakarta.validation.Valid;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/champ")
 public class ChampController {
