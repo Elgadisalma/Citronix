@@ -8,6 +8,8 @@ import com.example.citronix.service.ChampService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ChampServiceImpl implements ChampService {
 
@@ -21,6 +23,21 @@ public class ChampServiceImpl implements ChampService {
         Champ champ = champMapper.toEntity(champDto);
         Champ savedChamp = champRepository.save(champ);
         return champMapper.toDTO(savedChamp);
+    }
+
+
+    @Override
+    public ChampDto updateChamp(ChampDto champDto, Long id) {
+        Champ existingChamp = champRepository.findById(id).orElse(null);
+        if (existingChamp == null) {
+            return null;
+        }
+
+        existingChamp.setSuperficie(champDto.getSuperficie());
+
+        Champ updatedChamp = champRepository.save(existingChamp);
+
+        return champMapper.toDTO(updatedChamp);  // Retourne le ChampDto mis à jour
     }
 
 
