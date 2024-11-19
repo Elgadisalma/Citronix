@@ -46,7 +46,17 @@ public class ChampServiceImpl implements ChampService {
         return champMapper.toDTO(champ);
     }
 
+    @Override
+    public ChampDto deleteChamp(Long id) {
+        Champ existingChamp = champRepository.findById(id).orElse(null);
+        if (existingChamp == null) {
+            return null;
+        }
 
+        champRepository.delete(existingChamp);
+
+        return champMapper.toDTO(existingChamp);
+    }
 
 
 }

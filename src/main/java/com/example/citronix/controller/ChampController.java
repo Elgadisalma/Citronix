@@ -47,5 +47,15 @@ public class ChampController {
     }
 
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ChampDto> deleteChamp(@PathVariable Long id){
+        ChampDto deletedChamp = champService.deleteChamp(id);
+        if (deletedChamp != null) {
+            return ResponseEntity.ok(deletedChamp);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 
 }
