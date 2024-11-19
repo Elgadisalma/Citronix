@@ -23,4 +23,38 @@ public class Champ {
 
     @OneToMany(mappedBy = "champ")
     private List<Arbre> arbres;
+
+    // Getters et setters explicitement ajoutés
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public double getSuperficie() {
+        return superficie;
+    }
+
+    public void setSuperficie(double superficie) {
+        this.superficie = superficie;
+    }
+
+    public Ferme getFerme() {
+        return ferme;
+    }
+
+    public void setFerme(Ferme ferme) {
+        this.ferme = ferme;
+    }
+
+    public List<Arbre> getArbres() {
+        return arbres;
+    }
+
+    public void setChamps(List<Arbre> arbres) {
+        this.arbres = arbres;
+    }
+
 }

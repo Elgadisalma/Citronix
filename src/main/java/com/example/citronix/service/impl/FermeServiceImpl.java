@@ -5,12 +5,10 @@ import com.example.citronix.entity.Ferme;
 import com.example.citronix.mapper.FermeMapper;
 import com.example.citronix.repository.FermeRepository;
 import com.example.citronix.service.FermeService;
-import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class FermeServiceImpl implements FermeService {

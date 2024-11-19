@@ -1,15 +1,39 @@
 package com.example.citronix.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.validation.constraints.*;
+import lombok.*;
+import java.time.LocalDate;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ChampDto {
     private Long id;
+
+    @NotNull(message = "La superficie est obligatoire.")
+    @DecimalMin(value = "1.0", inclusive = true, message = "La superficie doit être supérieure ou égale à 1.0")
     private double superficie;
+
+    @NotNull(message = "L'ID de la ferme est obligatoire.")
     private Long idFerme;
+
     private List<Long> idArbres;
+
+    // Getters
+    public Long getId() {
+        return id;
+    }
+
+    public double getSuperficie() {
+        return superficie;
+    }
+
+    public Long getIdFerme() {
+        return idFerme;
+    }
+
+    public List<Long> getIdArbres() {
+        return idArbres;
+    }
 }
