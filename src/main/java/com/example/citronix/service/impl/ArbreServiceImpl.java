@@ -30,12 +30,31 @@ public class ArbreServiceImpl implements ArbreService {
                 () -> new IllegalArgumentException("Champ non trouvé avec l'ID : " + arbreDto.getIdChamp())
         );
 
+        double superficieChamp = champ.getSuperficie();
+        long nombreArbresDansChamp = arbreRepository.countByChampId(champ.getId());
+        double densiteMaximale = 10; //10 arbres = 0,1
+        double superficieParArbre = 1000 / densiteMaximale; // Superficie pour un arbre en m²
+
+        if (nombreArbresDansChamp >= (superficieChamp / superficieParArbre)) {
+            throw new IllegalArgumentException("La densité d'arbres dans ce champ dépasse la limite autorisée.");
+        }
+
+        if (arbreDto.getDatePlantation().plusYears(20).isBefore(java.time.LocalDate.now())) {
+            throw new IllegalArgumentException("L'arbre ne peut plus être productif car il a plus de 20 ans.");
+        }
+
+        //entre mai et mars
+        java.time.LocalDate datePlantation = arbreDto.getDatePlantation();
+        if (datePlantation.getMonthValue() < 3 || datePlantation.getMonthValue() > 5) {
+            throw new IllegalArgumentException("Les arbres ne peuvent être plantés qu'entre mars et mai.");
+        }
+
         Arbre arbre = arbreMapper.toEntity(arbreDto);
         arbre.setChamp(champ);
-
         Arbre savedArbre = arbreRepository.save(arbre);
         return arbreMapper.toDTO(savedArbre);
     }
+
 
     @Override
     public ArbreDto updateArbre(ArbreDto arbreDto, Long id) {

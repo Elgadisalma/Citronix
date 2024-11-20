@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ArbreRepository extends JpaRepository<Arbre, Long>  {
     List<Arbre> findByChampId(Long champId);
-}
+
+    long countByChampId(Long champId);}

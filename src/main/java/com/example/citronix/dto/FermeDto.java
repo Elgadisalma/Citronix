@@ -22,7 +22,7 @@ public class FermeDto {
     private String localisation;
 
     @NotNull(message = "La superficie est obligatoire.")
-    @DecimalMin(value = "1.0", inclusive = true, message = "La superficie doit être supérieure ou égale à 1.0")
+    @DecimalMin(value = "0.1", inclusive = true, message = "La superficie doit être supérieure ou égale à 0.1")
     private double superficie;
 
     @NotNull(message = "La date de création est obligatoire.")
