@@ -21,7 +21,7 @@ public class Champ {
     @JoinColumn(name = "id_ferme", nullable = false)
     private Ferme ferme;
 
-    @OneToMany(mappedBy = "champ")
+    @OneToMany(mappedBy = "champ", cascade = CascadeType.ALL)
     private List<Arbre> arbres;
 
     // Getters et setters explicitement ajoutés

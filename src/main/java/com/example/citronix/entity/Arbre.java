@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name = "arbres")
@@ -16,13 +16,61 @@ public class Arbre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date_plantation", nullable = false)
-    private LocalDate datePlantation;
+    @Column(nullable = false)
+    private String type;
 
     @Column(nullable = false)
-    private Duration age;
+    private LocalDate datePlantation;
 
     @ManyToOne
     @JoinColumn(name = "id_champ", nullable = false)
     private Champ champ;
+
+    public int getAge() {
+        return Period.between(datePlantation, LocalDate.now()).getYears();
+    }
+
+    public double getProductiviteAnnuelle() {
+        int age = getAge();
+        if (age < 3) {
+            return 2.5;
+        } else if (age <= 10) {
+            return 12.0;
+        } else {
+            return 20.0;
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public LocalDate getDatePlantation() {
+        return datePlantation;
+    }
+
+    public Champ getChamp() {
+        return champ;
+    }
+
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDatePlantation(LocalDate datePlantation) {
+        this.datePlantation = datePlantation;
+    }
+
+    public void setChamp(Champ champ) {
+        this.champ = champ;
+    }
 }
