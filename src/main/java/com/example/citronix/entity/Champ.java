@@ -24,7 +24,6 @@ public class Champ {
     @OneToMany(mappedBy = "champ", cascade = CascadeType.ALL)
     private List<Arbre> arbres;
 
-    // Getters et setters explicitement ajoutés
     public Long getId() {
         return id;
     }

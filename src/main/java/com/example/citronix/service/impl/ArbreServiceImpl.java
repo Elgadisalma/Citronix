@@ -1,7 +1,6 @@
 package com.example.citronix.service.impl;
 
 import com.example.citronix.dto.ArbreDto;
-import com.example.citronix.dto.ChampDto;
 import com.example.citronix.entity.Arbre;
 import com.example.citronix.entity.Champ;
 import com.example.citronix.mapper.ArbreMapper;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ArbreServiceImpl implements ArbreService {
@@ -74,9 +72,8 @@ public class ArbreServiceImpl implements ArbreService {
     }
 
     @Override
-    public List<ArbreDto> getAllArbres() {
-        return arbreRepository.findAll().stream()
-                .map(arbreMapper::toDTO)
-                .collect(Collectors.toList());
+    public List<ArbreDto> getArbresByChampId(Long champId) {
+        List<Arbre> arbreDeChamp = arbreRepository.findByChampId(champId);
+        return arbreMapper.toDTO(arbreDeChamp);
     }
 }

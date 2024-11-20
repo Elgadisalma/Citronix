@@ -10,6 +10,8 @@ import com.example.citronix.service.ArbreService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/arbre")
 public class ArbreController {
@@ -53,5 +55,15 @@ public class ArbreController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/champ/{id}")
+    public ResponseEntity<List<ArbreDto>> getArbresByChamp(@PathVariable Long id) {
+        List<ArbreDto> arbreDtos = arbreService.getArbresByChampId(id);
+        if (arbreDtos == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(arbreDtos);
+    }
+
 
 }
