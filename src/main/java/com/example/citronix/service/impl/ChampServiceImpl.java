@@ -70,10 +70,6 @@ public class ChampServiceImpl implements ChampService {
 
         existingChamp.setSuperficie(champDto.getSuperficie());
 
-        if (champDto.getIdArbres() == null) {
-            champDto.setIdArbres(new ArrayList<>()); 
-        }
-
         Champ updatedChamp = champRepository.save(existingChamp);
 
         return champMapper.toDTO(updatedChamp);
