@@ -107,4 +107,13 @@ public class RecolteServiceImpl implements RecolteService {
 
         return detailRecoltes;
     }
+
+    @Override
+    public RecolteDto findRecolteById(Long id){
+        Recolte recolte = recolteRepository.findById(id).orElse(null);
+        if (recolte == null) {
+            return null;
+        }
+        return recolteMapper.toDTO(recolte);
+    }
 }
