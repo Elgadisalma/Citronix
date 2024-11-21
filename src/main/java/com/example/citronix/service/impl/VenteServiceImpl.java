@@ -1,5 +1,6 @@
 package com.example.citronix.service.impl;
 
+import com.example.citronix.dto.UpdateVenteDto;
 import com.example.citronix.dto.VenteDto;
 import com.example.citronix.entity.Recolte;
 import com.example.citronix.entity.Vente;
@@ -46,6 +47,25 @@ public class VenteServiceImpl implements VenteService {
         Vente savedVente = venteRepository.save(vente);
 
         return venteMapper.toDTO(savedVente);
+    }
+
+
+    @Override
+    public VenteDto updateVente(Long id, UpdateVenteDto updateVenteDto) {
+        Vente existingVente = venteRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Vente introuvable pour l'ID fourni : " + id));
+
+        if (updateVenteDto.getDateVente().isBefore(existingVente.getRecolte().getDateRecolte())) {
+            throw new IllegalArgumentException("La date de vente doit être postérieure à la date de récolte.");
+        }
+
+        existingVente.setClient(updateVenteDto.getClient());
+        existingVente.setPrixUnitaire(updateVenteDto.getPrixUnitaire());
+        existingVente.setDateVente(updateVenteDto.getDateVente());
+
+        Vente updatedVente = venteRepository.save(existingVente);
+
+        return venteMapper.toDTO(updatedVente);
     }
 
 

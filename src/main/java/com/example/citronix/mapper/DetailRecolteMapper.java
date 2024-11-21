@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface DetailRecolteMapper {
     DetailRecolteDto toDTO(DetailRecolte detailRecolte);
+
     DetailRecolte toEntity(DetailRecolteDto detailRecolteDto);
 }

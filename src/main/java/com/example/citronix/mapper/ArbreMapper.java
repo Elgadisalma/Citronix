@@ -11,7 +11,9 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ArbreMapper {
     ArbreDto toDTO(Arbre arbre);
+
     Arbre toEntity(ArbreDto dto);
+
     List<ArbreDto> toDTO(List<Arbre> arbres);
 
 }
