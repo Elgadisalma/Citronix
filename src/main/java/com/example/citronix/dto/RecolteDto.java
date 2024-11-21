@@ -1,6 +1,7 @@
 package com.example.citronix.dto;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,7 @@ public class RecolteDto {
     private LocalDate dateRecolte;
 
     @NotNull(message = "La quantite est obligatoire.")
+    @Positive(message = "La quantité doit être un nombre positif.")
     private double quantite;
 
     @NotNull(message = "Le champ est obligatoire.")
