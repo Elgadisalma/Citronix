@@ -56,7 +56,7 @@ public class FermeController {
         }
     }
 
-    @GetMapping("/search")
+        @GetMapping("/search")
     public ResponseEntity<List<FermeDto>> searchFerme(
             @RequestParam(required = false) String nom,
             @RequestParam(required = false) String localisation,

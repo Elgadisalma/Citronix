@@ -2,7 +2,6 @@ package com.example.citronix.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.*;
-import java.time.LocalDate;
 import java.util.List;
 
 @Data
