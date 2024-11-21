@@ -1,8 +1,7 @@
 package com.example.citronix.controller;
 
-import com.example.citronix.dto.ArbreDto;
-import com.example.citronix.dto.UpdateVenteDto;
 import com.example.citronix.dto.VenteDto;
+import com.example.citronix.dto.UpdateVenteDto;
 import com.example.citronix.service.VenteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +41,15 @@ public class VenteController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<VenteDto> getVenteById(@PathVariable Long id) {
+        VenteDto venteDto = venteService.getVenteById(id);
+        if (venteDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(venteDto);
     }
 
 }
