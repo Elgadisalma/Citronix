@@ -6,4 +6,6 @@ public interface RecolteService {
     RecolteDto addRecolte(RecolteDto recolteDto);
 
     RecolteDto findRecolteById(Long id);
+
+    RecolteDto deleteRecolte(Long id);
 }

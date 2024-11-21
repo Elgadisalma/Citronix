@@ -1,10 +1,7 @@
 package com.example.citronix.service.impl;
 
 import com.example.citronix.dto.RecolteDto;
-import com.example.citronix.entity.Arbre;
-import com.example.citronix.entity.DetailRecolte;
-import com.example.citronix.entity.Recolte;
-import com.example.citronix.entity.Saison;
+import com.example.citronix.entity.*;
 import com.example.citronix.mapper.RecolteMapper;
 import com.example.citronix.repository.ArbreRepository;
 import com.example.citronix.repository.DetailRecolteRepository;
@@ -115,5 +112,17 @@ public class RecolteServiceImpl implements RecolteService {
             return null;
         }
         return recolteMapper.toDTO(recolte);
+    }
+
+    @Override
+    public RecolteDto deleteRecolte(Long id) {
+        Recolte existingRecolte = recolteRepository.findById(id).orElse(null);
+        if (existingRecolte == null) {
+            return null;
+        }
+
+        recolteRepository.delete(existingRecolte);
+
+        return recolteMapper.toDTO(existingRecolte);
     }
 }
