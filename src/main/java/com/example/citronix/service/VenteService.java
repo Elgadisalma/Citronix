@@ -7,4 +7,6 @@ public interface VenteService {
     VenteDto addVente(VenteDto venteDto);
 
     VenteDto updateVente(Long id, UpdateVenteDto updateVenteDto);
+
+    VenteDto deleteVente(Long id);
 }

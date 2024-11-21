@@ -2,6 +2,7 @@ package com.example.citronix.service.impl;
 
 import com.example.citronix.dto.UpdateVenteDto;
 import com.example.citronix.dto.VenteDto;
+import com.example.citronix.entity.Arbre;
 import com.example.citronix.entity.Recolte;
 import com.example.citronix.entity.Vente;
 import com.example.citronix.mapper.VenteMapper;
@@ -66,6 +67,18 @@ public class VenteServiceImpl implements VenteService {
         Vente updatedVente = venteRepository.save(existingVente);
 
         return venteMapper.toDTO(updatedVente);
+    }
+
+    @Override
+    public VenteDto deleteVente(Long id) {
+        Vente existingVente = venteRepository.findById(id).orElse(null);
+        if (existingVente == null) {
+            return null;
+        }
+
+        venteRepository.delete(existingVente);
+
+        return venteMapper.toDTO(existingVente);
     }
 
 

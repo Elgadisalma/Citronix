@@ -1,13 +1,17 @@
 package com.example.citronix.controller;
 
+import com.example.citronix.dto.ArbreDto;
 import com.example.citronix.dto.UpdateVenteDto;
 import com.example.citronix.dto.VenteDto;
 import com.example.citronix.service.VenteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/vente")
@@ -29,4 +33,15 @@ public class VenteController {
         VenteDto updatedVente = venteService.updateVente(id, updateVenteDto);
         return ResponseEntity.ok(updatedVente);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<VenteDto> deleteVente(@PathVariable Long id){
+        VenteDto deletedVente = venteService.deleteVente(id);
+        if (deletedVente != null) {
+            return ResponseEntity.ok(deletedVente);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }
