@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface RecolteMapper {
     RecolteDto toDTO(Recolte recolte);
+
     Recolte toEntity(RecolteDto recolteDto);
 }

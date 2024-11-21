@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface VenteMapper {
+
     VenteDto toDTO(Vente vente);
+
     Vente toEntity(VenteDto venteDto);
 }

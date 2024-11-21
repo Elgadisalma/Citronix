@@ -10,6 +10,8 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface FermeMapper {
     FermeDto toDTO(Ferme ferme);
+
     Ferme toEntity(FermeDto fermeDto);
+
     List<FermeDto> toDTO(List<Ferme> fermes);
 }
