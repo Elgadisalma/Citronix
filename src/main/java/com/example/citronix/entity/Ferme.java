@@ -30,6 +30,14 @@ public class Ferme {
     @OneToMany(mappedBy = "ferme")
     private List<Champ> champs;
 
+    public Ferme(Long id, String nom, String localisation, double superficie, LocalDate dateCreation) {
+        this.id = id;
+        this.nom = nom;
+        this.localisation = localisation;
+        this.superficie = superficie;
+        this.dateCreation = dateCreation;
+    }
+
     // Setters
     public void setId(Long id) {
         this.id = id;
