@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,8 @@ public class Ferme {
 
     @OneToMany(mappedBy = "ferme")
     private List<Champ> champs;
+
+    public Ferme() {}
 
     public Ferme(Long id, String nom, String localisation, double superficie, LocalDate dateCreation) {
         this.id = id;
@@ -61,5 +64,12 @@ public class Ferme {
 
     public void setChamps(List<Champ> champs) {
         this.champs = champs;
+    }
+
+    public List<Champ> getChamps() {
+        if (champs == null) {
+            champs = new ArrayList<>();
+        }
+        return champs;
     }
 }

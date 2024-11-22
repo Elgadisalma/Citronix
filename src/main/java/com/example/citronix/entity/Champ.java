@@ -24,6 +24,15 @@ public class Champ {
     @OneToMany(mappedBy = "champ", cascade = CascadeType.ALL)
     private List<Arbre> arbres;
 
+    public Champ(Long id, double superficie, Ferme ferme) {
+        this.id = id;
+        this.superficie = superficie;
+        this.ferme = ferme;
+    }
+
+    public Champ() {
+    }
+
     public Long getId() {
         return id;
     }
