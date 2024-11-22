@@ -30,6 +30,13 @@ public class FermeDto {
 
     private List<Long> idChamps;
 
+    public FermeDto(Long id, String nom, String localisation, Double superficie, LocalDate dateCreation) {
+        this.id = id;
+        this.nom = nom;
+        this.localisation = localisation;
+        this.superficie = superficie;
+        this.dateCreation = dateCreation;
+    }
     // Getters
     public Long getId() {
         return id;
