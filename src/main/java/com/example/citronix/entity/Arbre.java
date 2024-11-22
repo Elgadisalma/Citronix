@@ -41,36 +41,4 @@ public class Arbre {
         }
     }
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public String getType() {
-//        return type;
-//    }
-//
-//    public LocalDate getDatePlantation() {
-//        return datePlantation;
-//    }
-//
-//    public Champ getChamp() {
-//        return champ;
-//    }
-//
-//    // Setters
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public void setType(String type) {
-//        this.type = type;
-//    }
-//
-//    public void setDatePlantation(LocalDate datePlantation) {
-//        this.datePlantation = datePlantation;
-//    }
-//
-//    public void setChamp(Champ champ) {
-//        this.champ = champ;
-//    }
 }
